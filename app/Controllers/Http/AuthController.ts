@@ -2,8 +2,8 @@ import { Exception } from '@adonisjs/core/build/standalone';
 import { rules, schema } from '@ioc:Adonis/Core/Validator';
 import { DateTime } from 'luxon';
 import User from 'App/Models/User';
-// import VerifyEmailNotification from 'App/Mailers/VerifyEmailNotification';
-// import ResetPassqwordNotification from 'App/Mailers/ResetPassqwordNotification';
+import VerifyEmailMailer from 'App/Mailers/VerifyEmailMailer';
+import ResetPasswordMailer from 'App/Mailers/ResetPasswordMailer';
 
 export default class AuthController {
     public async login({ auth, request, response }) {
@@ -54,7 +54,7 @@ export default class AuthController {
 
         try {
             const user = await User.create(data);
-            // new VerifyEmailNotification(user).send();
+            new VerifyEmailMailer(user).send();
             return { success: 'Please check your email inbox (and spam) for an access link.' };
         } catch (e) {
             return response.unprocessableEntity({ error: e.message });
@@ -72,7 +72,7 @@ export default class AuthController {
 
     public async resendVerificationEmail({ auth, response }) {
         try {
-            // new VerifyEmailNotification(auth.user).send();
+            new VerifyEmailMailer(auth.user).send();
             return {
                 success: 'Please check your email inbox (and spam) for an access link.',
             };
@@ -116,7 +116,7 @@ export default class AuthController {
             throw new Exception("We can't find a user with that e-mail address.", 422);
         }
 
-        // new ResetPassqwordNotification(user).send();
+        new ResetPasswordMailer(user).send();
 
         return { success: 'Please check your email inbox (and spam) for a password reset link.' };
     }

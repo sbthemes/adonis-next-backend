@@ -5,9 +5,9 @@
  * file.
  */
 
-import type { Config } from '@japa/runner'
-import TestUtils from '@ioc:Adonis/Core/TestUtils'
-import { assert, runFailedTests, specReporter, apiClient } from '@japa/preset-adonis'
+import type { Config } from '@japa/runner';
+import TestUtils from '@ioc:Adonis/Core/TestUtils';
+import { assert, runFailedTests, specReporter, apiClient } from '@japa/preset-adonis';
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ import { assert, runFailedTests, specReporter, apiClient } from '@japa/preset-ad
 | Feel free to remove existing plugins or add more.
 |
 */
-export const plugins: Config['plugins'] = [assert(), runFailedTests(), apiClient()]
+export const plugins: Config['plugins'] = [assert(), runFailedTests(), apiClient()];
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ export const plugins: Config['plugins'] = [assert(), runFailedTests(), apiClient
 | of tests on the terminal.
 |
 */
-export const reporters: Config['reporters'] = [specReporter()]
+export const reporters: Config['reporters'] = [specReporter()];
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +49,7 @@ export const reporters: Config['reporters'] = [specReporter()]
 export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
     setup: [() => TestUtils.ace().loadCommands()],
     teardown: [],
-}
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +64,6 @@ export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
 */
 export const configureSuite: Config['configureSuite'] = (suite) => {
     if (suite.name === 'functional') {
-        suite.setup(() => TestUtils.httpServer().start())
+        suite.setup(() => TestUtils.httpServer().start());
     }
-}
+};

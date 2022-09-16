@@ -2,6 +2,7 @@
 
 -   Clone this repo
 -   copy .env.example to .env
+-   Edit `package.json` file and change name to project name.
 -   Run command: `npm install`
 -   Run command: `node ace generate:key`. This command will generate. Copy that key set as APP_KEY in .env file.
 -   Edit `ecosystem.config.js` file and change name to domain name or something unique on server.

@@ -13,7 +13,8 @@ export default class AuthController {
                 password: schema.string({}),
             }),
             messages: {
-                required: 'The {{ field }} field is required.',
+                'required': 'The {{ field }} field is required.',
+                'email.email': 'The email must be a valid email address.',
             },
         });
 

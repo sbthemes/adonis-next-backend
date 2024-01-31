@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repo is using AdonisJS v5 and Next.js 13. Use https://github.com/sbthemes/adonis-api-starter-kit for latest version.
+
 # How to use this repo
 
 -   Clone this repo
